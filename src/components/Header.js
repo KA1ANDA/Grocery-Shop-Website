@@ -5,10 +5,19 @@ import Orders from './Orders';
 
 
 const ordersFull = (props) =>{
+  const totalAmount = props.showOrders.map(el => el.price)
   return(
     <div>
       {props.showOrders.map(el =>
         ( <Orders order={el} key={el.id} orderCancel={props.orderCancel}/>) )}
+        <div>
+          <div>
+            Total :  $ {totalAmount.reduce((accumulator, currentValue) => accumulator + currentValue, 0)} 
+          </div>
+          <div>
+            Order Now
+          </div>  
+        </div>
     </div>
   )
 }

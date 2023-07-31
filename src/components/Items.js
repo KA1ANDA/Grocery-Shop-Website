@@ -1,13 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component, useContext, useState } from 'react'
 import Item from './Item'
 
-export default class Items extends Component {
-  render() {
+const Items = (props) => {
+  // const [orderedItem , setOrderedItem] = useState([])
+
+
+  //  const addToCart = (addedItem) =>{
+  //   setOrderedItem(prevOrderedItems => [
+  //     ...prevOrderedItems,
+  //     addedItem
+  //   ]);
+  // }
+
+
     return (
       <main>
-        {this.props.items.map(el =>
-           <Item item={el} key={el.id} addOrder={this.props.addOrder} addQuantity={this.props.addQuantity} removeQuantity={this.props.removeQuantity}/> )}
+        {props.items.map(el =>
+           <Item item={el} key={el.id} addOrder={props.addOrder} addToCart={props.addToCart}/> )}
       </main>
     )
-  }
 }
+
+export default Items

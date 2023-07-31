@@ -10,7 +10,8 @@ export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      orders:[],
+      // orders:[],
+      orderedItem:[],
       currentItems:[],
       items:[
         {
@@ -28,7 +29,7 @@ export default class App extends Component {
           img:'Chinese Cabbage.jpg',
           weight:'1kg',
           category:'vagetable',
-          price:'5',
+          price:5,
           quantity:1
         },
         {
@@ -37,7 +38,7 @@ export default class App extends Component {
           weight:'1kg',
           img:'Potato.jpg',
           category:'vagetable',
-          price:'4',
+          price:4,
           quantity:1
         },
         {
@@ -46,7 +47,7 @@ export default class App extends Component {
           img:'Cucumber.jpg',
           category:'vagetable',
           weight:'1kg',
-          price:'6',
+          price:6,
           quantity:1
         },
         {
@@ -55,7 +56,7 @@ export default class App extends Component {
           img:'Tomato.jpg',
           category:'vagetable',
           weight:'1kg',
-          price:'5',
+          price:5,
           quantity:1
         },
         {
@@ -64,7 +65,7 @@ export default class App extends Component {
           img:'Apple.jpg',
           category:'fruit',
           weight:'1kg',
-          price:'9',
+          price:9,
           quantity:1
         },
         {
@@ -73,7 +74,7 @@ export default class App extends Component {
           img:'Papaya.jpg',
           category:'fruit',
           weight:'1kg',
-          price:'14',
+          price:14,
           quantity:1
         },
         {
@@ -82,7 +83,7 @@ export default class App extends Component {
           img:'Banana.jpg',
           category:'fruit',
           weight:'1kg',
-          price:'9',
+          price:9,
           quantity:1
         },
         {
@@ -91,7 +92,7 @@ export default class App extends Component {
           img:'Caramel Candy.jpg',
           category:'snack',
           weight:'800g',
-          price:'14',
+          price:14,
           quantity:1
         },
         {
@@ -100,7 +101,7 @@ export default class App extends Component {
           img:'Purple Cabbage.jpg',
           weight:'1kg',
           category:'vagetable',
-          price:'9',
+          price:9,
           quantity:1
         },
         {
@@ -109,7 +110,7 @@ export default class App extends Component {
           img:'Onion.jpg',
           weight:'1kg',
           category:'vagetable',
-          price:'4',
+          price:4,
           quantity:1
         },
         {
@@ -118,7 +119,7 @@ export default class App extends Component {
           img:'Strawberry.jpg',
           weight:'1kg',
           category:'fruit',
-          price:'11',
+          price:11,
           quantity:1
         },
         {
@@ -127,7 +128,7 @@ export default class App extends Component {
           img:'Orca.jpg',
           weight:'1kg',
           category:'fish',
-          price:'25',
+          price:25,
           quantity:1
         },
         {
@@ -136,7 +137,7 @@ export default class App extends Component {
           img:'Flipper.jpg',
           weight:'1kg',
           category:'fish',
-          price:'31',
+          price:31,
           quantity:1
         },
         {
@@ -145,7 +146,7 @@ export default class App extends Component {
           img:'octopus.jpg',
           weight:'1kg',
           category:'fish',
-          price:'56',
+          price:56,
           quantity:1
         },
         {
@@ -154,12 +155,12 @@ export default class App extends Component {
           img:'Crevet.jpg',
           weight:'1kg',
           category:'fish',
-          price:'40',
+          price:40,
           quantity:1
         }
       ],
-      amount:[],
-      amountPrice:[],
+      // amount:[],
+      // ItemPrice:[],
       rewievs:[
         {
           id:1,
@@ -183,23 +184,27 @@ export default class App extends Component {
     this.addRewiev = this.addRewiev.bind(this)
     this.CloseaddRewievWindow = this.CloseaddRewievWindow.bind(this)
     this.OpenaddRewievWindow = this.OpenaddRewievWindow.bind(this)
-    this.removeQuantity = this.removeQuantity.bind(this)
-    this.addQuantity = this.addQuantity.bind(this)
+    // this.removeQuantity = this.removeQuantity.bind(this)
+    // this.addQuantity = this.addQuantity.bind(this)
     this.chooseCategory = this.chooseCategory.bind(this)
-    this.addToOrder = this.addToOrder.bind(this)
+    // this.addToOrder = this.addToOrder.bind(this)
     this.orderCancel = this.orderCancel.bind(this)
+    this.addToCart = this.addToCart.bind(this)
+
   }
 
 
+
   render() {
+    console.log(this.state.orderedItem)
     return (
       <div>
         <div className="wrapper">
-          <Header showOrders={this.state.orders} orderCancel={this.orderCancel} />
+          <Header showOrders={this.state.orderedItem} orderCancel={this.orderCancel} />
           <h2 className='category-title'>Category</h2>
           <Categories chooseCategory={this.chooseCategory}/>
           <h2 className='product-title'>Products</h2>
-          <Items items={this.state.currentItems} addOrder={this.addToOrder}  addQuantity={this.addQuantity} amount={this.state.amount} removeQuantity={this.removeQuantity}/>
+          <Items items={this.state.currentItems} addToCart={this.addToCart}  addQuantity={this.addQuantity} amount={this.state.amount} removeQuantity={this.removeQuantity}/>
         </div>
         {this.state.OpenaddRewievWindow&&(
            <AddRewievWindow CloseaddRewievWindow={this.CloseaddRewievWindow} addRewiev={this.addRewiev}/>
@@ -210,6 +215,12 @@ export default class App extends Component {
     )
   }
 
+
+  addToCart(addedItem){
+    // this.state.orderedItem.filter(el => el.id !== id)
+    const updatedOrderedItems = [...this.state.orderedItem.filter(el => el.id !== addedItem.id), addedItem];
+    this.setState({ orderedItem: updatedOrderedItems });
+  }
 
 
   addRewiev(newRewiev){
@@ -228,21 +239,21 @@ export default class App extends Component {
   }
 
 
-  addQuantity(item){
-   this.setState({amount:item.quantity+=1})
-   this.setState({amountPrice:item.price*=item.quantity})
-   console.log(this.state.amountPrice)
-  }
+  // addQuantity(item){
+  //  this.setState({amount:item.quantity+=1})
+  //  this.setState({amountPrice:item.price*=item.quantity})
+  //  console.log(this.state.amountPrice)
+  // }
 
 
-  removeQuantity(item){
-    if(item.quantity<=1){
-      this.setState({amount:item.quantity})
-    }
-    else{
-      this.setState({amount:item.quantity-=1})
-    }
-  }
+  // removeQuantity(item){
+  //   if(item.quantity<=1){
+  //     this.setState({amount:item.quantity})
+  //   }
+  //   else{
+  //     this.setState({amount:item.quantity-=1})
+  //   }
+  // }
 
 
 
@@ -256,13 +267,9 @@ export default class App extends Component {
 
 
   orderCancel(id) {
-    this.setState({orders: this.state.orders.filter(el => el.id !== id)})
+    this.setState({orderedItem: this.state.orderedItem.filter(el => el.id !== id)})
   }
 
 
-
-  addToOrder(item) {
-    this.setState({orders:[...this.state.orders,item]})
-  }
 }
 

@@ -11,7 +11,9 @@ export default class Rewievs extends Component {
               <Rewiev key={el.id} rewiev={el}/>
           )}
         </div>
-        <button onClick={()=>this.props.OpenaddRewievWindow()}>Add Rewiev</button>
+        <div className='button-wrapper'>
+          <button onClick={()=>this.props.OpenaddRewievWindow()}>Add Rewiev</button>
+        </div>
       </div>
     )
   }
