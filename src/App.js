@@ -5,6 +5,9 @@ import Items from './components/Items'
 import Categories from './components/Categories'
 import Rewievs from './components/Rewievs'
 import AddRewievWindow from './components/AddRewievWindow'
+import OrderNotification from './components/OrderNotification'
+import sound from "./sounds/success.ogg"
+
 
 export default class App extends Component {
   constructor(props){
@@ -13,6 +16,8 @@ export default class App extends Component {
       // orders:[],
       orderedItem:[],
       currentItems:[],
+      wishedItem:'',
+      notification:false,
       items:[
         {
           id:1,
@@ -164,15 +169,44 @@ export default class App extends Component {
       rewievs:[
         {
           id:1,
-          img:'laura.jpg',
+          img:'defaultPicture.jpg',
           firstName:'Laura',
           lastName:'Menson',
           comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         },
         {
           id:2,
-          img:'mike.jpg',
+          img:'defaultPicture.jpg',
           firstName:'Mike',
+          lastName:'Schmidt',
+          comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        },
+        {
+          id:3,
+          img:'defaultPicture.jpg',
+          firstName:'Robin',
+          lastName:'Schmidt',
+          comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        },
+        {
+          id:4,
+          img:'defaultPicture.jpg',
+          firstName:'Robin',
+          lastName:'Schmidt',
+          comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        },
+        {
+          id:5,
+          img:'defaultPicture.jpg',
+          firstName:'Robin',
+          lastName:'Schmidt',
+          comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+        }
+        ,
+        {
+          id:6,
+          img:'defaultPicture.jpg',
+          firstName:'Robin',
           lastName:'Schmidt',
           comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
@@ -190,15 +224,39 @@ export default class App extends Component {
     // this.addToOrder = this.addToOrder.bind(this)
     this.orderCancel = this.orderCancel.bind(this)
     this.addToCart = this.addToCart.bind(this)
+    this.deleteNotification = this.deleteNotification.bind(this)
 
   }
 
+  // componentDidMount() {
+  //   const soundEffect = new Howl({
+  //     src: ['./sounds/success.ogg'],
+  //     volume: 0.5, // Adjust the volume as needed (0.0 to 1.0)
+  //   });
+  // }
 
+
+  // componentDidMount() {
+  //   if (this.state.notification) {
+  //     setTimeout(() => {
+  //       this.deleteNotification();
+  //       console.log(this.state.notification)
+  //     }, 2000);
+  //   }
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.notification !== prevState.notification) {
+      setTimeout(() => {
+        this.deleteNotification();
+      }, 3500);
+    }
+  }
 
   render() {
-    console.log(this.state.orderedItem)
+    console.log(this.state.notification)
     return (
-      <div>
+      <div className="app">
         <div className="wrapper">
           <Header showOrders={this.state.orderedItem} orderCancel={this.orderCancel} />
           <h2 className='category-title'>Category</h2>
@@ -209,6 +267,10 @@ export default class App extends Component {
         {this.state.OpenaddRewievWindow&&(
            <AddRewievWindow CloseaddRewievWindow={this.CloseaddRewievWindow} addRewiev={this.addRewiev}/>
         )}
+
+         {this.state.notification &&( 
+           <OrderNotification notification={this.state.notification} wishedItem={this.state.wishedItem}/>
+         )}
         <Rewievs rewievs={this.state.rewievs} OpenaddRewievWindow={this.OpenaddRewievWindow}/>
         <Footer />   
       </div>
@@ -220,7 +282,17 @@ export default class App extends Component {
     // this.state.orderedItem.filter(el => el.id !== id)
     const updatedOrderedItems = [...this.state.orderedItem.filter(el => el.id !== addedItem.id), addedItem];
     this.setState({ orderedItem: updatedOrderedItems });
+    this.setState({ notification: true });
+    this.setState({wishedItem:addedItem.title})
+    new Audio(sound).play()
+
   }
+
+
+  deleteNotification(){
+    this.setState({ notification: false });
+  }
+
 
 
   addRewiev(newRewiev){
