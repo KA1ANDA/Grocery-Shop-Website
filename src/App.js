@@ -24,7 +24,7 @@ export default class App extends Component {
           title:'Cabbage',
           img:'Cabbage.jpg',
           weight:'1kg',
-          category:'vagetable',
+          category:'Vagetables',
           price:7,
           quantity:1
         },
@@ -33,7 +33,7 @@ export default class App extends Component {
           title:'Chinese Cabbage',
           img:'Chinese Cabbage.jpg',
           weight:'1kg',
-          category:'vagetable',
+          category:'Vagetables',
           price:5,
           quantity:1
         },
@@ -42,7 +42,7 @@ export default class App extends Component {
           title:'Potato',
           weight:'1kg',
           img:'Potato.jpg',
-          category:'vagetable',
+          category:'Vagetables',
           price:4,
           quantity:1
         },
@@ -50,7 +50,7 @@ export default class App extends Component {
           id:4,
           title:'Cucumber',
           img:'Cucumber.jpg',
-          category:'vagetable',
+          category:'Vagetables',
           weight:'1kg',
           price:6,
           quantity:1
@@ -59,7 +59,7 @@ export default class App extends Component {
           id:5,
           title:'Tomato',
           img:'Tomato.jpg',
-          category:'vagetable',
+          category:'Vagetables',
           weight:'1kg',
           price:5,
           quantity:1
@@ -68,7 +68,7 @@ export default class App extends Component {
           id:6,
           title:'Apple',
           img:'Apple.jpg',
-          category:'fruit',
+          category:'Fruits',
           weight:'1kg',
           price:9,
           quantity:1
@@ -77,7 +77,7 @@ export default class App extends Component {
           id:7,
           title:'Papaya',
           img:'Papaya.jpg',
-          category:'fruit',
+          category:'Fruits',
           weight:'1kg',
           price:14,
           quantity:1
@@ -86,7 +86,7 @@ export default class App extends Component {
           id:8,
           title:'Banana',
           img:'Banana.jpg',
-          category:'fruit',
+          category:'Fruits',
           weight:'1kg',
           price:9,
           quantity:1
@@ -95,7 +95,7 @@ export default class App extends Component {
           id:9,
           title:'Caramel Candy',
           img:'Caramel Candy.jpg',
-          category:'snack',
+          category:'Snacks',
           weight:'800g',
           price:14,
           quantity:1
@@ -105,7 +105,7 @@ export default class App extends Component {
           title:'Purple Cabbage',
           img:'Purple Cabbage.jpg',
           weight:'1kg',
-          category:'vagetable',
+          category:'Vagetables',
           price:9,
           quantity:1
         },
@@ -114,7 +114,7 @@ export default class App extends Component {
           title:'Onion',
           img:'Onion.jpg',
           weight:'1kg',
-          category:'vagetable',
+          category:'Vagetables',
           price:4,
           quantity:1
         },
@@ -123,7 +123,7 @@ export default class App extends Component {
           title:'Strawberry',
           img:'Strawberry.jpg',
           weight:'1kg',
-          category:'fruit',
+          category:'Fruits',
           price:11,
           quantity:1
         },
@@ -132,7 +132,7 @@ export default class App extends Component {
           title:'Orca',
           img:'Orca.jpg',
           weight:'1kg',
-          category:'fish',
+          category:'Sea Products',
           price:25,
           quantity:1
         },
@@ -141,7 +141,7 @@ export default class App extends Component {
           title:'Flipper',
           img:'Flipper.jpg',
           weight:'1kg',
-          category:'fish',
+          category:'Sea Products',
           price:31,
           quantity:1
         },
@@ -150,7 +150,7 @@ export default class App extends Component {
           title:'Octopus',
           img:'octopus.jpg',
           weight:'1kg',
-          category:'fish',
+          category:'Sea Products',
           price:56,
           quantity:1
         },
@@ -159,7 +159,7 @@ export default class App extends Component {
           title:'Crevet',
           img:'Crevet.jpg',
           weight:'1kg',
-          category:'fish',
+          category:'Sea Products',
           price:40,
           quantity:1
         }
@@ -211,7 +211,8 @@ export default class App extends Component {
           comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
         }
       ],
-      OpenaddRewievWindow:false
+      OpenaddRewievWindow:false,
+      categoryName:'Products'
       
     }
     this.state.currentItems = this.state.items
@@ -260,8 +261,8 @@ export default class App extends Component {
         <div className="wrapper">
           <Header showOrders={this.state.orderedItem} orderCancel={this.orderCancel} />
           <h2 className='category-title'>Category</h2>
-          <Categories chooseCategory={this.chooseCategory}/>
-          <h2 className='product-title'>Products</h2>
+          {/* <Categories chooseCategory={this.chooseCategory}/> */}
+          <h2 className='product-title'>{this.state.categoryName}</h2>
           <Items items={this.state.currentItems} addToCart={this.addToCart}  addQuantity={this.addQuantity} amount={this.state.amount} removeQuantity={this.removeQuantity}/>
         </div>
         {this.state.OpenaddRewievWindow&&(
@@ -330,11 +331,13 @@ export default class App extends Component {
 
 
   chooseCategory(category){
-    if(category==="all"){
+    if(category==="Products"){
       this.setState({currentItems:this.state.items})
+      this.setState({categoryName:category})
       return
     }
     this.setState({currentItems:this.state.items.filter(el => el.category === category)})
+    this.setState({categoryName:category})
   }
 
 

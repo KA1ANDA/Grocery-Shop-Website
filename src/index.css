@@ -41,14 +41,19 @@ body{
 .wrapper{
   width: 1280px;
   margin: 50px auto;
+  background-color: purple;
 }
 
 header{
   position: relative;
+  background-color: orange;
+
 }
 
 header .nav-and-logo{
   position: relative;
+  background-color: red;
+
 }
 
 header .logo{
@@ -68,6 +73,9 @@ header .logo span{
 .fullOrdersWrapper{
   display: flex;
   flex-direction: column;
+  animation: fade 0.3s linear;
+  max-height: 500px;
+  overflow-y: auto;
 }
 
 .totalInfoWrapper{
@@ -109,8 +117,7 @@ header .shop-cart{
   z-index: 1000;
   padding: 20px;
   padding-bottom: 0;
-  border-radius: 20px;
-  animation: fade 0.3s linear;
+  border-radius: 20px; 
 
   
 }
@@ -121,7 +128,7 @@ header .shop-cart .order{
   margin-bottom: 20px;
   border-bottom: 1px solid green;
   padding-bottom: 10px;
-  /* background-color: orange; */
+  
 
   
 }
@@ -243,22 +250,28 @@ header ul.nav li:hover{
 header .presentation{
   position: relative;
   margin:70px 0;
-  background: url(./img/presentation-img.jpg);
+  /* background: url(./img/presentation-img.jpg); */
   width: 100%;
-  height: 710px;
-  background-size: cover;
-  background-position: center center;
-  border-radius: 5%;
+  /* height: 790px; */
+  /* background-size: cover;
+  background-position: center center; */
+  border-radius: 40px;
 }
+header .presentation .surati {
+  width: 100%;
+  height:100%;
+  border-radius: 60px;
 
-header .presentation::after{
+}
+/* header .presentation::after{
   position: absolute;
   font-weight: 900;
-  font-size: 50px;
+  font-size: 60px;
   width: 400px;
   left: 700px;
-  top:300px;
+  top:330px;
   content: 'Order your Daily Groceries';
+  font-family: Montserrat, sans-serif;
 
 }
 
@@ -266,16 +279,21 @@ header .presentation::before{
   position: absolute;
   content: '#Free Delivery';
   left: 700px;
-  top:500px;
+  top:580px;
   font-size: 20px;
   font-weight: 900;
   color:rgb(16, 162, 16);
-}
+  font-family: Montserrat, san s-serif;
+  
+
+} */
 
 .category-title{
   margin-bottom: 70px;
   font-weight: 600;
   font-size: 35px;
+  background-color: red;
+
 }
 
 
@@ -284,12 +302,17 @@ header .presentation::before{
   font-weight: 600;
   font-size: 35px;
   margin-bottom: 20px;
+  background-color: red;
+
+
 }
 
 .categories{
   display: flex;
   justify-content: space-between;
   font-size: 70px;
+  background-color: orange;
+
 }
 
 .categories div{
@@ -317,21 +340,31 @@ header .presentation::before{
 
 
 main{
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  /* justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
   width: 100%;
-  justify-content: space-between;
+  margin: auto;
+  justify-content: center;
+  background-color: blue;
+
+  
 }
 
 
 main .item{
   overflow: hidden;
   margin-top: 70px;
-  width: 30%;
-  height: 450px;
+  /* width: 30%; */
+  /* height: 450px; */
   box-shadow: -3px -3px 36px -15px rgba(202,197,197,1);
   -webkit-box-shadow: -3px -3px 36px -15px rgba(202,197,197,1);
   -moz-box-shadow: -3px -3px 36px -15px rgba(202,197,197,1);
+  /* background-color: red; */
+  border-radius: 50px;
 }
 
 main .item img{
@@ -428,6 +461,8 @@ main .item .add-more-less .add-to-cart .icon:hover{
 .rewievs-area h1{
   text-align: center;
   margin-top: 30px;
+  
+  
 }
 
 .rewievs{
@@ -440,6 +475,11 @@ main .item .add-more-less .add-to-cart .icon:hover{
   scroll-behavior: smooth;
   margin-top: 25px;
   background-color: red; */
+
+
+
+  
+
 }
 
 
@@ -454,13 +494,15 @@ main .item .add-more-less .add-to-cart .icon:hover{
   overflow-y: auto;
   box-shadow: -3px -3px 36px -15px rgba(202,197,197,1);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103); */
-  /* background-color: red;  */
-  height: 300px;
+
+  /* height: 300px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 30px;
   cursor:grab;
+
+  
 
   
 }
@@ -541,6 +583,7 @@ main .item .add-more-less .add-to-cart .icon:hover{
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 9999;
   overflow: auto;
+
 }
 
 .window-bg form span{
@@ -634,6 +677,7 @@ section {
   font-size: 22px;
   font-weight: 700;
   text-decoration: underline;
+  
 }
 
 .footer-distributed {
@@ -723,6 +767,7 @@ section {
   font-weight: bold;
   animation: fade 0.5s linear;
   box-shadow: 0px 15px 10px -15px #111;    
+  z-index: 99;
 }
 
 .checkMark{
@@ -751,14 +796,16 @@ section {
 /* Media Queries */
 
 .mySwiper{
-  /* background-color: blue; */
   margin-top: 25px;
   width: 100%;
+
 }
 
 .swiper {
   width: 100%;
   height: 100%;
+
+
 
 }
 
@@ -770,8 +817,11 @@ section {
   border-radius: 40px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103); 
 
+ 
+
   /* Center slide text vertically */
   /* border: 2px solid red; */
+
 }
 
 .swiper-slide img {
@@ -780,6 +830,18 @@ section {
   height: 100%;
   object-fit: cover;
 }
+
+@media(max-width: 1280px){
+  main{
+    grid-template-columns: 35% 35%;
+  }
+
+  .wrapper{
+    width: 100%;
+   }
+}
+
+
 
 
 @media (max-width: 600px) {
@@ -793,4 +855,11 @@ section {
   .footer-distributed .footer-left p.footer-links {
     line-height: 1.8;
   }
+
+  main{
+    grid-template-columns: 70%;
+  }
 }
+
+
+

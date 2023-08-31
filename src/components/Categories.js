@@ -13,27 +13,27 @@ export default class Categories extends Component {
     this.state = {
       categories:[
         {
-          key:"all",
+          key:"Products",
           icon:TfiLayoutGrid3,
           name:"Show all"
         },
         {
-          key:"vagetable",
+          key:"Vagetables",
           icon:GiCarrot,
           name:"Vagetables"
         },
         {
-          key:"fruit",
+          key:"Fruits",
           icon:GiFruitBowl,
           name:"Fruits"
         },
         {
-          key:"snack",
+          key:"Snacks",
           icon:GiChipsBag,
           name:"Snacks"
         },
         {
-          key:"fish",
+          key:"Sea Products",
           icon:FaFish,
           name:"Sea Products"
         },
