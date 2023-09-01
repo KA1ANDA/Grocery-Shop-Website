@@ -260,7 +260,7 @@ header .presentation{
 header .presentation .surati {
   width: 100%;
   height:100%;
-  border-radius: 60px;
+  border-radius: 20px;
 
 }
 /* header .presentation::after{
@@ -296,6 +296,20 @@ header .presentation::before{
 
 }
 
+.category-title-collapsed{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+
+}
+
+.category-title-collapsed div {
+  display: flex;
+  justify-content: center;
+
+}
+
 
 .product-title{
   margin-top: 70px;
@@ -307,7 +321,7 @@ header .presentation::before{
 
 }
 
-.categories{
+/* .categories{
   display: flex;
   justify-content: space-between;
   font-size: 70px;
@@ -320,11 +334,12 @@ header .presentation::before{
   padding: 20px;
   border-radius: 10%;
   cursor: pointer;
-  width: 100px;
+  width: 100%;
   text-align: center;
   transition: all 500ms ease;
   border: 1px solid transparent;
 }
+
 
 .categories div:hover{
   transform: scale(1.1);
@@ -336,7 +351,7 @@ header .presentation::before{
   font-size: 15px;
   text-align: center;
   font-weight: 600;
-}
+} */
 
 
 main{
@@ -780,6 +795,11 @@ section {
 }
 
 
+.red-background{
+  background-color: yellow;
+}
+
+
 
 @keyframes fade {
   from {
@@ -795,19 +815,6 @@ section {
 
 /* Media Queries */
 
-.mySwiper{
-  margin-top: 25px;
-  width: 100%;
-
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
-
-
-
-}
 
 .swiper-slide {
   text-align: start;
@@ -817,10 +824,7 @@ section {
   border-radius: 40px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103); 
 
- 
 
-  /* Center slide text vertically */
-  /* border: 2px solid red; */
 
 }
 
@@ -839,6 +843,14 @@ section {
   .wrapper{
     width: 100%;
    }
+
+   /* .categories div {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   } */
 }
 
 
@@ -859,6 +871,7 @@ section {
   main{
     grid-template-columns: 70%;
   }
+
 }
 
 

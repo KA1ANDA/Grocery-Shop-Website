@@ -7,6 +7,7 @@ import Rewievs from './components/Rewievs'
 import AddRewievWindow from './components/AddRewievWindow'
 import OrderNotification from './components/OrderNotification'
 import sound from "./sounds/success.ogg"
+import {GiHamburgerMenu} from 'react-icons/gi'
 
 
 export default class App extends Component {
@@ -212,7 +213,8 @@ export default class App extends Component {
         }
       ],
       OpenaddRewievWindow:false,
-      categoryName:'Products'
+      categoryName:'Products',
+      isLargeScreen:false,
       
     }
     this.state.currentItems = this.state.items
@@ -237,14 +239,23 @@ export default class App extends Component {
   // }
 
 
-  // componentDidMount() {
-  //   if (this.state.notification) {
-  //     setTimeout(() => {
-  //       this.deleteNotification();
-  //       console.log(this.state.notification)
-  //     }, 2000);
-  //   }
-  // }
+  componentDidMount() {
+    const checkScreenSize = () => {
+      this.setState({isLargeScreen:window.innerWidth <= 800});
+      
+    };
+
+    // Initial check when the component mounts
+    checkScreenSize();
+
+    // Add a listener to update the state when the window is resized
+    window.addEventListener('resize', checkScreenSize);
+
+    // Clean up the listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.notification !== prevState.notification) {
@@ -260,8 +271,8 @@ export default class App extends Component {
       <div className="app">
         <div className="wrapper">
           <Header showOrders={this.state.orderedItem} orderCancel={this.orderCancel} />
-          <h2 className='category-title'>Category</h2>
-          {/* <Categories chooseCategory={this.chooseCategory}/> */}
+          <h2 className='category-title' >Category</h2>
+          <Categories chooseCategory={this.chooseCategory}/>        
           <h2 className='product-title'>{this.state.categoryName}</h2>
           <Items items={this.state.currentItems} addToCart={this.addToCart}  addQuantity={this.addQuantity} amount={this.state.amount} removeQuantity={this.removeQuantity}/>
         </div>
@@ -273,10 +284,14 @@ export default class App extends Component {
            <OrderNotification notification={this.state.notification} wishedItem={this.state.wishedItem}/>
          )}
         <Rewievs rewievs={this.state.rewievs} OpenaddRewievWindow={this.OpenaddRewievWindow}/>
-        <Footer />   
+        <Footer />
+
+              
       </div>
     )
   }
+
+
 
 
   addToCart(addedItem){
