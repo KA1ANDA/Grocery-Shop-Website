@@ -53,7 +53,30 @@ header{
 header .nav-and-logo{
   position: relative;
   background-color: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  overflow:hidden;
 
+}
+
+.menu{
+  background-color: lightblue;
+  height: 100vh;
+  width: 50%;
+  position:fixed;
+  right: 0;
+  top:0;
+  z-index: 100;
+
+}
+
+.closeMenu{
+  background-color: green;
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 header .logo{
@@ -76,6 +99,11 @@ header .logo span{
   animation: fade 0.3s linear;
   max-height: 500px;
   overflow-y: auto;
+}
+
+.fullOrdersMenu{
+  display: flex;
+  flex-direction: row;
 }
 
 .totalInfoWrapper{
@@ -234,19 +262,42 @@ header ul.nav{
   position:absolute;
   bottom: 0;
   right: 0;
+  background-color: pink;
 }
 
-header ul.nav li {
+.showMore{
+  font-size: 40px;
+  /* background-color: blue; */
+  align-self: flex-end;
+  cursor: pointer;
+
+}
+
+ul.nav li {
   display: inline;
   margin-left: 25px;
   transition: color 500ms ease;
   cursor: pointer;
 }
 
-header ul.nav li:hover{
+ul.nav li:hover{
   color:rgb(16, 162, 16);
 }
 
+.menuNav{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  background-color:hotpink;
+}
+
+.menuNav li {
+  margin:10px 0 ;
+  cursor: pointer;
+  background-color: yellow;
+  text-align: center;
+  font-weight: bold;
+}
 header .presentation{
   position: relative;
   margin:70px 0;
@@ -795,9 +846,6 @@ section {
 }
 
 
-.red-background{
-  background-color: yellow;
-}
 
 
 
@@ -851,6 +899,30 @@ section {
     justify-content: center;
     align-items: center;
    } */
+}
+
+@media(max-width: 800px){
+  .fullOrdersWrapper{
+    background-color: red;
+    max-height: none;
+    height: 75vh;
+  }
+  .order{
+    background-color: green;
+    margin: 10px 0;
+  }
+  .order img{
+    width: 90px;
+    height: 90px;
+
+  }
+
+  .totalInfoWrapper{
+    background-color: orange;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+  }
 }
 
 

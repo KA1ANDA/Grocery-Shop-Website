@@ -8,6 +8,7 @@ import AddRewievWindow from './components/AddRewievWindow'
 import OrderNotification from './components/OrderNotification'
 import sound from "./sounds/success.ogg"
 import {GiHamburgerMenu} from 'react-icons/gi'
+import ColapsedMenu from './components/ColapsedMenu'
 
 
 export default class App extends Component {
@@ -215,6 +216,7 @@ export default class App extends Component {
       OpenaddRewievWindow:false,
       categoryName:'Products',
       isLargeScreen:false,
+      menu:false
       
     }
     this.state.currentItems = this.state.items
@@ -228,6 +230,7 @@ export default class App extends Component {
     this.orderCancel = this.orderCancel.bind(this)
     this.addToCart = this.addToCart.bind(this)
     this.deleteNotification = this.deleteNotification.bind(this)
+    this.toggleMenu = this.toggleMenu.bind(this)
 
   }
 
@@ -270,7 +273,10 @@ export default class App extends Component {
     return (
       <div className="app">
         <div className="wrapper">
-          <Header showOrders={this.state.orderedItem} orderCancel={this.orderCancel} />
+          {this.state.menu && 
+          <ColapsedMenu toggleMenu={this.toggleMenu} menuState={this.state.menu} showOrders={this.state.orderedItem}  orderCancel={this.orderCancel}/>
+          }
+          <Header showOrders={this.state.orderedItem} orderCancel={this.orderCancel} menu={this.state.menu} toggleMenu={this.toggleMenu}/>
           <h2 className='category-title' >Category</h2>
           <Categories chooseCategory={this.chooseCategory}/>        
           <h2 className='product-title'>{this.state.categoryName}</h2>
@@ -292,7 +298,9 @@ export default class App extends Component {
   }
 
 
-
+  toggleMenu(){
+    this.setState({menu:!this.state.menu})
+  }
 
   addToCart(addedItem){
     // this.state.orderedItem.filter(el => el.id !== id)
