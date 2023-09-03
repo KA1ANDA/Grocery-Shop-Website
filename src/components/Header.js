@@ -51,7 +51,7 @@ export default function Header(props) {
   useEffect(() => {
     // Function to check the screen size and update the state
     const checkScreenSize = () => {
-      setIsLargeScreen(window.innerWidth <= 768);
+      setIsLargeScreen(window.innerWidth <= 820);
     };
 
     // Initial check when the component mounts
@@ -65,6 +65,13 @@ export default function Header(props) {
       window.removeEventListener('resize', checkScreenSize);
     };
   }, []);
+
+
+  useEffect(() =>{
+    if(isLargeScreen){
+      setCartopen(false)
+    }
+  },[isLargeScreen])
 
 
   // const toggleMenu = () => {

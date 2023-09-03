@@ -245,6 +245,10 @@ export default class App extends Component {
   componentDidMount() {
     const checkScreenSize = () => {
       this.setState({isLargeScreen:window.innerWidth <= 800});
+      if(!this.state.isLargeScreen){
+        this.setState({menu:false})
+      }
+
       
     };
 

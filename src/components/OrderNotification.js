@@ -9,7 +9,7 @@ const OrderNotification = (props) => {
   return (
     <div className='notification'>
       <div className='checkMark'><AiFillCheckCircle/></div>
-      <div>{props.wishedItem} was added to cart</div>
+      <div className='notificationTitle'>{props.wishedItem} was added to cart</div>
     </div>
   );
 };

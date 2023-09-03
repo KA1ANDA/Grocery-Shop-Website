@@ -58,9 +58,11 @@ const Item = (props) => {
         <p>Product Weight: {props.item.weight}</p>
         <b>${itemPrice}</b>
         <div className='add-more-less'>
-          <div className='less' onClick={amount!=1 ? removeQuantity : null}>-</div>
-          <h3>{amount}</h3>
-          <div className='more' onClick={addQuantity}>+</div>
+          <div className='amount'>
+            <div className='less' onClick={amount!=1 ? removeQuantity : null}>-</div>
+            <h3>{amount}</h3>
+            <div className='more' onClick={addQuantity}>+</div>
+          </div>   
           <div className='add-to-cart' onClick={() => props.addToCart({
             id:props.item.id,
             img: props.item.img,

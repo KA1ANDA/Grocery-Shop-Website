@@ -56,40 +56,41 @@ const Rewievs = (props) => {
 
 
     return (
-      <div className='rewievs-area'>
-        <h1>What Our Clients Say</h1>
+      <div className='rewievWrapper'>
+        <div className='rewievs-area'>
+          <h1>What Our Clients Say</h1>
 
 
+          
+          <Swiper
+            slidesPerView={ScreenSize()}
+            spaceBetween={30}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[Pagination]}
+            className={styles.mySwiper}
+          >
+      
 
-        <Swiper
-          slidesPerView={ScreenSize()}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Pagination]}
-          className={styles.mySwiper}
-        >
-    
-
-              {props.rewievs.map(el => 
-                <SwiperSlide key={el.id} className='rewievs'>
-                  {/* {el.firstName} */}
-                  <div className='rewiev'>
-                    <div className='user-photo'>
-                      <img src={"./img/userImgs/"+el.img} />
+                {props.rewievs.map(el => 
+                  <SwiperSlide key={el.id} className='rewievs'>
+                    {/* {el.firstName} */}
+                    <div className='rewiev'>
+                      <div className='user-photo'>
+                        <img src={"./img/userImgs/"+el.img} />
+                      </div>
+                      <div className='name'>
+                        <div>{el.firstName}</div>
+                        <div className='lastName'> {el.lastName}</div>
+                      </div>
+                      <p>{el.comment}</p>
                     </div>
-                    <div className='name'>
-                      <div>{el.firstName}</div>
-                      <div className='lastName'> {el.lastName}</div>
-                    </div>
-                    <p>{el.comment}</p>
-                  </div>
-                  </SwiperSlide>  
-              )}
-           
-    
-        </Swiper>
+                    </SwiperSlide>  
+                )}
+            
+      
+          </Swiper>
 
 
 
@@ -99,10 +100,12 @@ const Rewievs = (props) => {
 
 
 
-        <div className='button-wrapper'>
-          <button onClick={()=>props.OpenaddRewievWindow()}>Add Rewiev</button>
+          <div className='button-wrapper'>
+            <button onClick={()=>props.OpenaddRewievWindow()}>Add Rewiev</button>
+          </div>
         </div>
       </div>
+      
     )
 }
 
