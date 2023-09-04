@@ -5,6 +5,7 @@ import { GiChipsBag } from 'react-icons/gi';
 import { FaFish } from 'react-icons/fa';
 import { GiBeerBottle } from 'react-icons/gi';
 import { TfiLayoutGrid3 } from 'react-icons/tfi';
+import {CiDiscount1} from 'react-icons/ci'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import styles from './categories.module.css'
@@ -46,6 +47,11 @@ const Categories = (props) => {
       key:"drink",
       icon:GiBeerBottle,
       name:"Drinks"
+    },
+    {
+      key:"discounts",
+      icon:CiDiscount1,
+      name:"Sales"
     }
   ])
 

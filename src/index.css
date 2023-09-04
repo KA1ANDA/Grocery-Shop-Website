@@ -80,6 +80,9 @@ header .nav-and-logo{
   right: 0;
   top:0;
   z-index: 100;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+
 
 }
 
@@ -379,7 +382,6 @@ header .presentation::before{
   margin-bottom: 70px;
   font-weight: 600;
   font-size: 35px;
-  /* background-color: red; */
   padding: 0 20px;
 
 
@@ -753,6 +755,9 @@ main .item .add-more-less .add-to-cart .icon:hover{
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 9999;
   overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -766,6 +771,7 @@ main .item .add-more-less .add-to-cart .icon:hover{
   transition: transform 500ms ease;
   cursor: pointer;
   font-weight: 300;
+  
 }
 
 
@@ -780,19 +786,25 @@ main .item .add-more-less .add-to-cart .icon:hover{
   background-color: #eef6ed;
   width: 500px;
   position: relative;
-  margin:10% auto;
+  margin:auto;
   padding: 30px 30px;
   border-radius:9px;
+  margin: 0 20px;
 }
 
 .window-bg form textarea{
   height:200px;
   width: 100%;
 }
+.addRewButtonWrapper{
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  margin-top:20px;
+
+}
 
 .window-bg form button{
-  margin-top:20px;
-  margin-left: 169px;
   width: 150px;
   height: 50px;
   background-color:rgb(16, 162, 16); 

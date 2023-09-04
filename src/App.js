@@ -133,7 +133,7 @@ export default class App extends Component {
         {
           id:13,
           title:'Orca',
-          img:'Orca.jpg',
+          img:'orca.jpg',
           weight:'1kg',
           category:'Sea Products',
           price:25,
@@ -331,6 +331,8 @@ export default class App extends Component {
   addRewiev(newRewiev){
     const id = this.state.rewievs.length + 1
     this.setState({rewievs:[...this.state.rewievs,{id,...newRewiev}]})
+    this.setState({OpenaddRewievWindow:false})
+
   }
 
 

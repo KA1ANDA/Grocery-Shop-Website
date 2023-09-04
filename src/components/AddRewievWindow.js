@@ -24,14 +24,16 @@ export default class AddRewievWindow extends Component {
           <input type="text" id="lastName" placeholder='Last Name' onChange={(e)=>this.setState({lastName:e.target.value})}/>
           <label htmlFor="comment" >Say What You Think About Us</label>
           <textarea id="comment" placeholder='Add Your Rewiev Here' onChange={(e)=>this.setState({comment:e.target.value})}></textarea>
-          <button type='button' onClick={()=>this.props.addRewiev(
-            {
-              img:'defaultPicture.jpg',
-              firstName:this.state.name,
-              lastName:this.state.lastName,
-              comment:this.state.comment,
-            }
-          )}>Add</button>
+          <div className='addRewButtonWrapper'>
+            <button type='button' onClick={()=>this.props.addRewiev(
+              {
+                img:'defaultPicture.jpg',
+                firstName:this.state.name,
+                lastName:this.state.lastName,
+                comment:this.state.comment,
+              }
+            )}>Add</button>
+          </div>
         </form>
       </div>  
     )
