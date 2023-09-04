@@ -11,6 +11,7 @@ import {GiHamburgerMenu} from 'react-icons/gi'
 import ColapsedMenu from './components/ColapsedMenu'
 
 
+
 export default class App extends Component {
   constructor(props){
     super(props)
@@ -275,7 +276,11 @@ export default class App extends Component {
   render() {
     console.log(this.state.notification)
     return (
-      <div className="app">
+      <div className='app'>
+        {this.state.menu && 
+        <div className='appBlur' onClick={this.toggleMenu}></div>
+        }
+        
         <div className="wrapper">
           {this.state.menu && 
           <ColapsedMenu toggleMenu={this.toggleMenu} menuState={this.state.menu} showOrders={this.state.orderedItem}  orderCancel={this.orderCancel}/>
