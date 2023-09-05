@@ -131,7 +131,6 @@ header .logo span{
   align-items: flex-end;
   font-weight: bold;
   color: green;
-  background-color: #9dcf97;
 
 }
 
@@ -1064,6 +1063,7 @@ section {
     bottom: 0px;
     width: 100%;
     margin-bottom: 0px;
+    background-color: #9dcf97;
   
   }
 
